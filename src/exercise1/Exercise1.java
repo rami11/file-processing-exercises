@@ -1,7 +1,6 @@
 package exercise1;
 
 import java.io.*;
-import java.util.InputMismatchException;
 
 public class Exercise1 {
 
@@ -31,16 +30,14 @@ public class Exercise1 {
             System.out.println("Done!");
 
 
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        } catch (InputMismatchException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
