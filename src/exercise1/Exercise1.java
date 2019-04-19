@@ -9,8 +9,8 @@ public class Exercise1 {
     private static final String outputFileName = "out.text";
 
     public static void main(String[] args) {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(inputFilePath));
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFilePath))) {
             BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName));
 
             String line = reader.readLine();
@@ -25,12 +25,11 @@ public class Exercise1 {
                     sum += Integer.parseInt(number);
                 }
 
-                System.out.println("writing to ");
+                System.out.println("Writing " + sum + " to " + outputFileName);
                 writer.write(sum + "\n");
             }
+            System.out.println("Done!");
 
-            reader.close();
-            writer.close();
 
         } catch (NumberFormatException e) {
             e.printStackTrace();
