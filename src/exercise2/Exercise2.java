@@ -8,15 +8,17 @@ public class Exercise2 {
 
     public static void main(String[] args) {
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(inputFileName));
-             BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName))) {
+        try {
+            try (BufferedReader reader = new BufferedReader(new FileReader(inputFileName));
+                 BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName))) {
 
-            String line = reader.readLine();
-            while (line != null) {
-                double number = Double.parseDouble(line);
-                writer.write((int) Math.pow(number, 2) + "\n");
+                String line = reader.readLine();
+                while (line != null) {
+                    double number = Double.parseDouble(line);
+                    writer.write((int) Math.pow(number, 2) + "\n");
 
-                line = reader.readLine();
+                    line = reader.readLine();
+                }
             }
 
         } catch (FileNotFoundException ex) {

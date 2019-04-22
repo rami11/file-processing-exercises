@@ -9,26 +9,26 @@ public class Exercise1 {
 
     public static void main(String[] args) {
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(inputFilePath))) {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName));
+        try {
+            try (BufferedReader reader = new BufferedReader(new FileReader(inputFilePath));
+                 BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName))) {
+                String line = reader.readLine();
+                int count = Integer.parseInt(line);
 
-            String line = reader.readLine();
-            int count = Integer.parseInt(line);
+                int i = 0;
+                while (i++ < count) {
 
-            int i = 0;
-            while (i++ < count) {
+                    String[] numberStr = reader.readLine().split(" ");
+                    int sum = 0;
+                    for (String number : numberStr) {
+                        sum += Integer.parseInt(number);
+                    }
 
-                String[] numberStr = reader.readLine().split(" ");
-                int sum = 0;
-                for (String number : numberStr) {
-                    sum += Integer.parseInt(number);
+                    System.out.println("Writing " + sum + " to " + outputFileName);
+                    writer.write(sum + "\n");
                 }
-
-                System.out.println("Writing " + sum + " to " + outputFileName);
-                writer.write(sum + "\n");
+                System.out.println("Done!");
             }
-            System.out.println("Done!");
-
 
         } catch (NumberFormatException ex) {
             ex.printStackTrace();
